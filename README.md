@@ -1,10 +1,15 @@
-# Title
-
-## Abstract
-A max 150-word description of the project question or idea, goals, dataset used. What story you would like to tell and why? What's the motivation behind your project?
+# **Fine-tuning BERT (Politic ideology detection)**
+Il presente lavoro è un fine-tuning del modello BERT 'nome del modello' per un task di *text classification*: Politic Ideology Detection, binary classification \(*let/right*\). Il progetto cerca di riprodurre uno dei task presenti nell'edizione 2023 di Evalita, utilizzando i risultati ottenuti alla competizione come *benchmark*.
 
 ## Dataset
-List the dataset(s) you want to use, and some ideas on how do you expect to get, manage, process and enrich it/them. Show you've read the docs and are familiar with some examples, and you've a clear idea on what to expect. Discuss data size and format if relevant.
 
 ## Documentation
-This can be added as the project unfolds. You should describe, in particular, what your repo contains and how to reproduce your results.
+La repository è così articolata:
+- \Data = cartella contenente i dati utilizzati per il fine-tuning:
+  - training set file:
+  - validation set file:
+  - test set file
+  - file run_glue_no_trainer.py adattato per il task
+- \src = cartella contenente il collegamento con il file colab contenente il fine-tuning
+- \output
+Indicazioni per la riproducibilità del progetto??
