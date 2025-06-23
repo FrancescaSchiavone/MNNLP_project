@@ -6,7 +6,7 @@ I dati utilizzati in questo progetto derivano da risorse pubbliche fornite nell'
 
 - **ABSITA / EVALITA 2023 PoliticIT** – Task di rilevamento dell’ideologia politica in testi italiani, organizzato nell’ambito di EVALITA 2023.  
   Maggiori informazioni e dataset sono disponibili su:  
-  \url{https://codalab.lisn.upsaclay.fr/competitions/8507}
+  {https://codalab.lisn.upsaclay.fr/competitions/8507}
 
 - Studi accademici correlati:  
   - García-Díaz, J. A., Colomo-Palacios, R., & Valencia-García, R. (2022). *Psychographic traits identification based on political ideology: An author analysis study on Spanish politicians’ tweets posted in 2020*. Future Generation Computer Systems, 130(1), 59-74.  
@@ -17,7 +17,7 @@ Questi dataset e studi sono soggetti alle rispettive licenze e regolamenti delle
 ## Codice (Hugging Face Transformers)
 
 Il progetto include codice adattato dal repository ufficiale di [Hugging Face Transformers](https://github.com/huggingface/transformers): è stato utilizzato lo script -'run_glue_no_trainer.py'
-\url{ttps://github.com/huggingface/transformers/blob/main/examples/pytorch/text-classification/run_glue_no_trainer.py}
+{ttps://github.com/huggingface/transformers/blob/main/examples/pytorch/text-classification/run_glue_no_trainer.py}
 Questi script sono rilasciati sotto **Apache License 2.0**. Per maggiori dettagli sulla licenza consultare il file LICENSE presente nel repository Hugging Face Transformers.
 
 ## Modelli pre-addestrati utilizzati
