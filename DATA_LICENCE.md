@@ -16,7 +16,8 @@ Questi dataset e studi sono soggetti alle rispettive licenze e regolamenti delle
 
 ## Codice (Hugging Face Transformers)
 
-Il progetto include codice adattato dal repository ufficiale di [Hugging Face Transformers](https://github.com/huggingface/transformers): è stato utilizzato lo script *run_glue_no_trainer.py* (\url{ttps://github.com/huggingface/transformers/blob/main/examples/pytorch/text-classification/run_glue_no_trainer.py})
+Il progetto include codice adattato dal repository ufficiale di [Hugging Face Transformers](https://github.com/huggingface/transformers): è stato utilizzato lo script -'run_glue_no_trainer.py'
+\url{ttps://github.com/huggingface/transformers/blob/main/examples/pytorch/text-classification/run_glue_no_trainer.py}
 Questi script sono rilasciati sotto **Apache License 2.0**. Per maggiori dettagli sulla licenza consultare il file LICENSE presente nel repository Hugging Face Transformers.
 
 ## Modelli pre-addestrati utilizzati
