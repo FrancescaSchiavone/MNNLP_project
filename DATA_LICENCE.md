@@ -26,8 +26,7 @@ Per l’estrazione delle caratteristiche testuali e la classificazione, sono sta
 
 - roberta-base-italian (https://huggingface.co/osiria/roberta-base-italian)`
 
-Questi modelli sono distribuiti con licenze specificate nelle loro pagine ufficiali su Hugging Face:  
-\url{https://huggingface.co/}
+Questi modelli sono distribuiti con licenze specificate nelle loro pagine ufficiali su Hugging Face.
 
 Si invita a consultare le pagine dei modelli per informazioni dettagliate sulle licenze e sulle condizioni d’uso.
 
