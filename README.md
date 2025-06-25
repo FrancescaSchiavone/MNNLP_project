@@ -9,7 +9,7 @@ La repository è così articolata:
   - test set file: *politicIt_phase_2_test_codalab.csv*
   - Split dataset.ipynb = collegamento con il foglio colab in cui è stato diviso il file train in *training set* e *validation set*
 - \src = cartella contenente i file relativi al fine-tuning:
-  - run_glue_no_trainer.py = script adattato dall'originale al task qui presente
+  - run_glue_no_trainer-4.py = script adattato dall'originale al task qui presente
   - evaluate_model.py = file utilizzato per la valutazione del modello sui dati del *test set*
   - fine_tuning.ipynb = collegamento con il foglio colab in cui è stato addestrato e testato il modello.
 - \output:
@@ -17,4 +17,4 @@ La repository è così articolata:
   - \output evaluation:
     - *prediction.csv* = predizioni realizzate dal modello sul test set esclusivamente rispetto alla colonna *'binary_ideology'*
     - *metriche.txt* = contiene le metriche di *accuracy*, *precision*, *recall*, *F1-score* e il *Classification Report*
-    - confusion_matrix.png = matrice di confusione. 
+    - *confusion_matrix.png* = matrice di confusione. 
