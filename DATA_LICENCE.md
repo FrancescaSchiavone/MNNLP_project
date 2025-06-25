@@ -24,7 +24,7 @@ Questi script sono rilasciati sotto **Apache License 2.0**. Per maggiori dettagl
 
 Per l’estrazione delle caratteristiche testuali e la classificazione, sono stati utilizzati modelli pre-addestrati disponibili su Hugging Face Hub, in particolare:
 
-- roberta-base-italian (https://huggingface.co/osiria/roberta-base-italian)`
+- XLM-RoBERTa (base-sized model) (https://huggingface.co/FacebookAI/xlm-roberta-base)
 
 Questi modelli sono distribuiti con licenze specificate nelle loro pagine ufficiali su Hugging Face.
 
