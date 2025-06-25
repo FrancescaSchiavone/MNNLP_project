@@ -35,6 +35,9 @@ from datasets import load_dataset
 from huggingface_hub import HfApi
 from torch.utils.data import DataLoader
 from tqdm.auto import tqdm
+import numpy as np
+import torch
+from torch.nn import CrossEntropyLoss
 
 import transformers
 from transformers import (
@@ -129,7 +132,7 @@ def parse_args():
         default=5e-5,
         help="Initial learning rate (after the potential warmup period) to use.",
     )
-    parser.add_argument("--weight_decay", type=float, default=0.0, help="Weight decay to use.")
+    parser.add_argument("--weight_decay", type=float, default=0.05, help="Weight decay to use.")
     parser.add_argument("--num_train_epochs", type=int, default=3, help="Total number of training epochs to perform.")
     parser.add_argument(
         "--max_train_steps",
@@ -316,6 +319,16 @@ def main():
 
     # See more about loading any type of standard or custom dataset at
     # https://huggingface.co/docs/datasets/loading_datasets.
+    
+    # Calcolo della distribuzione delle etichette nel training set
+    class_counts = train_df['label'].value_counts().sort_index().to_numpy()
+    total_samples = sum(class_counts)
+
+    # Calcolo pesi inversamente proporzionali alla frequenza
+    class_weights = total_samples / (len(class_counts) * class_counts)
+    class_weights = torch.tensor(class_weights, dtype=torch.float)
+
+    print("Class weights:", class_weights)
 
     # Labels
     if args.task_name is not None:
@@ -355,11 +368,11 @@ def main():
     config.pad_token_id = tokenizer.pad_token_id
     model = AutoModelForSequenceClassification.from_pretrained(
         args.model_name_or_path,
-        from_tf=bool(".ckpt" in args.model_name_or_path),
         config=config,
         ignore_mismatched_sizes=args.ignore_mismatched_sizes,
-        trust_remote_code=args.trust_remote_code,
     )
+    
+    loss_fn = CrossEntropyLoss(weight=class_weights.to(accelerator.device))
 
     # Preprocessing the datasets
     if args.task_name is not None:
@@ -488,7 +501,7 @@ def main():
         },
         {
             "params": [p for n, p in model.named_parameters() if any(nd in n for nd in no_decay)],
-            "weight_decay": 0.0,
+            "weight_decay": 0.00,
         },
     ]
     optimizer = torch.optim.AdamW(optimizer_grouped_parameters, lr=args.learning_rate)
@@ -595,7 +608,7 @@ def main():
             active_dataloader = train_dataloader
         for step, batch in enumerate(active_dataloader):
             outputs = model(**batch)
-            loss = outputs.loss
+            loss = loss_fn(outputs.logits, batch["labels"])
             # We keep track of the loss at each epoch
             if args.with_tracking:
                 total_loss += loss.detach().float()
@@ -607,6 +620,9 @@ def main():
                 optimizer.zero_grad()
                 progress_bar.update(1)
                 completed_steps += 1
+                
+                if step % 100 == 0:
+                    accelerator.print(f"Step {step} - Loss: {loss.item()}")
 
             if isinstance(checkpointing_steps, int):
                 if completed_steps % checkpointing_steps == 0 and accelerator.sync_gradients:
