@@ -5,7 +5,9 @@ import torch
 from datasets import Dataset
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, DataCollatorWithPadding
 from torch.utils.data import DataLoader
-from sklearn.metrics import accuracy_score, precision_recall_fscore_support, classification_report
+from sklearn.metrics import accuracy_score, precision_recall_fscore_support, classification_report, confusion_matrix
+import matplotlib.pyplot as plt
+import seaborn as sns
 from accelerate import Accelerator
 
 def parse_args():
@@ -45,7 +47,7 @@ def main():
 
     # --- Preprocessing ---------------------------------------------------
     def preprocess(example):
-        return tokenizer(example["text"], truncation=True, padding=True)
+    	return tokenizer(example["text"], truncation=True, padding="max_length", max_length=256)
 
     remove_cols = ["text"]  # Non rimuovere 'label' per mantenere batch["labels"]
     dataset = dataset.map(preprocess, batched=True, remove_columns=remove_cols)
@@ -82,6 +84,7 @@ def main():
         acc = accuracy_score(all_labels, all_preds)
         precision, recall, f1, _ = precision_recall_fscore_support(all_labels, all_preds, average="weighted")
         report = classification_report(all_labels, all_preds, target_names=["left", "right"])
+        cm = confusion_matrix(all_labels, all_preds)
 
         print(f"\n Metriche sul test set:")
         print(f"Accuracy:  {acc:.4f}")
@@ -90,6 +93,31 @@ def main():
         print(f"F1-score:  {f1:.4f}")
         print("\nClassification Report:\n", report)
 
+
+    # --- Salva le metriche su file
+
+        with open("metrics.txt", "w") as f:
+            f.write("Metriche sul test set:\n")
+            f.write(f"Accuracy:  {acc:.4f}\n")
+            f.write(f"Precision: {precision:.4f}\n")
+            f.write(f"Recall:    {recall:.4f}\n")
+            f.write(f"F1-score:  {f1:.4f}\n")
+            f.write("\nClassification Report:\n")
+            f.write(report)
+            f.write("\nConfusion Matrix:\n")
+            f.write(str(cm))
+
+    # Confusion metrix 
+        plt.style.use("ggplot")
+        plt.figure(figsize=(6, 5))
+        sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=["left", "right"], yticklabels=["left", "right"])
+        plt.title("Confusion Matrix")
+        plt.xlabel("Predicted")
+        plt.ylabel("True")
+        plt.tight_layout()
+        plt.savefig("confusion_matrix.png")
+        plt.close()
+        
 if __name__ == "__main__":
     main()
 
