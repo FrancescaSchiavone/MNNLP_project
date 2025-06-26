@@ -16,6 +16,7 @@ La repository è così articolata:
 - \output:
   - \output training = cartella contenente il file *all_result.json* in cui è presente la metrica di accuratezza alla fine della fase di training sul *validation set*.
   - \output evaluation:
-    - *prediction.csv* = predizioni realizzate dal modello sul test set esclusivamente rispetto alla colonna *'binary_ideology'*
     - *metriche.txt* = contiene le metriche di *accuracy*, *precision*, *recall*, *F1-score* e il *Classification Report*
     - *confusion_matrix.jpg* = matrice di confusione. 
+- file README.md 
+- file DATA_LICENCE.md
