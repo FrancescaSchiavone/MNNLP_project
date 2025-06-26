@@ -19,6 +19,6 @@ La repository è così articolata:
     - *metriche.txt* = contiene le metriche di *accuracy*, *precision*, *recall*, *F1-score* e il *Classification Report*
     - *confusion_matrix.jpg* = matrice di confusione.
 - \report:
-  -\report Gorzoni_Schiavone_MNNLP.pdf = Il report a corredo del progetto analizza la struttura del Dataset scelto, passa in rassegna i dettagli tecnici del fine-tuning: dal preprocessing del dataset, alle modifiche effettuate sullo script *run\_glue\_no\_trainer.py*, alla scelta degli iperparametri.
+  - Gorzoni_Schiavone_MNNLP.pdf = Il report a corredo del progetto analizza la struttura del Dataset scelto, passa in rassegna i dettagli tecnici del fine-tuning: dal preprocessing del dataset, alle modifiche effettuate sullo script *run\_glue\_no\_trainer.py*, alla scelta degli iperparametri.
 - file README.md 
 - file DATA_LICENCE.md
