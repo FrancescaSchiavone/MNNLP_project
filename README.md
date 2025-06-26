@@ -17,4 +17,4 @@ La repository è così articolata:
   - \output evaluation:
     - *prediction.csv* = predizioni realizzate dal modello sul test set esclusivamente rispetto alla colonna *'binary_ideology'*
     - *metriche.txt* = contiene le metriche di *accuracy*, *precision*, *recall*, *F1-score* e il *Classification Report*
-    - *confusion_matrix.png* = matrice di confusione. 
+    - *confusion_matrix.jpg* = matrice di confusione. 
