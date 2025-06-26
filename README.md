@@ -12,7 +12,7 @@ La repository è così articolata:
 - \src = cartella contenente i file relativi al fine-tuning:
   - run_glue_no_trainer-4.py = script adattato dall'originale al task qui presente
   - evaluate_model.py = file utilizzato per la valutazione del modello sui dati del *test set*
-  - fine_tuning.ipynb = collegamento con il foglio colab in cui è stato addestrato e testato il modello.
+  - roberta.ipynb = collegamento con il foglio colab in cui è stato addestrato e testato il modello.
 - \output:
   - \output training = cartella contenente il file *all_result.json* in cui è presente la metrica di accuratezza alla fine della fase di training sul *validation set*.
   - \output evaluation:
