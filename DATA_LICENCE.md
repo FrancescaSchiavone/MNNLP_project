@@ -26,6 +26,8 @@ Per l’estrazione delle caratteristiche testuali e la classificazione, sono sta
 
 - XLM-RoBERTa (base-sized model) (https://huggingface.co/FacebookAI/xlm-roberta-base)
 
+- dbmdz/bert-base-italian-uncased (https://huggingface.co/dbmdz/bert-base-italian-uncased)
+  
 Questi modelli sono distribuiti con licenze specificate nelle loro pagine ufficiali su Hugging Face.
 
 Si invita a consultare le pagine dei modelli per informazioni dettagliate sulle licenze e sulle condizioni d’uso.
