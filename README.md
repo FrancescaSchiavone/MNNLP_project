@@ -1,4 +1,5 @@
 # **Fine-tuning PoliticIT**
+![Python](https://img.shields.io/badge/Lang-Python-blue)
 Il presente lavoro è un fine-tuning del modello RoBERTa (xlm-roberta-base) per un task di *text classification*: **Politic Ideology Detection**, binary classification \(*let/right*\) con l'ausilio dello script *run_glue_no_trainer.py* messo a disposizione da Hugging Face.\
 Il progetto cerca di riprodurre uno dei task presenti nell'edizione 2023 di Evalita, utilizzando i risultati ottenuti alla competizione come *benchmark*. Per maggiori dettagli sul task e sul dataset utilizzato, si veda il file *Gorzoni_Schiavone_MNNLP.pdf* nella cartella \report.
 
